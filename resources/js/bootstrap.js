@@ -4,7 +4,7 @@ try {
     window.$ = window.jQuery = require('jquery');
     window.Popper = require('popper.js');
     require('bootstrap');
-    require('chart.js');
+    window.Chart = require('chart.js');
 } catch (oException) {
 
 }

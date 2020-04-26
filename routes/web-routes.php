@@ -12,4 +12,7 @@ use Illuminate\Support\Facades\Route;
 */
 Route::group(['namespace' => 'Dashboard'], function() {
     Route::get('/', 'DashboardController@index');
+    Route::get('/api/get/country/list', 'DashboardController@getCountryList');
+    Route::get('/api/get/country/cases', 'DashboardController@getCountryCases');
+    Route::get('/api/get/country/total/cases', 'DashboardController@getCountryTotalCases');
 });

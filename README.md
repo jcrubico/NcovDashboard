@@ -9,8 +9,15 @@
     <li>Bootstrap</li>
 </ul>
 
-
 Spread the :heart: in ✝️ amen!
+
+## Kindly follow me on:
+#### Github 🕵✝️: https://github.com/jcrubico
+#### Facebook 🕵✝️: https://www.facebook.com/jc.rubico.11
+
+## Kindly email me on:
+#### Yahoo 🕵✝️: jcrubico@yahoo.com
+#### Gmail 🕵✝️: jcrubico.personal@gmail.com
 
 ## Credits
 Pomber JSON: https://github.com/pomber/covid19

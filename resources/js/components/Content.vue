@@ -18,24 +18,32 @@
             </div>
          </div>
          <div class="row py-2">
-            <div class="col-md-4">
-               <div class="card mb-4 shadow-sm">
+            <div class="col-md-3">
+               <div class="card mb-3 shadow-sm">
                   <div class="card-body">
                      <b class="card-text">Total confirmed</b>
                      <div class="d-flex justify-content-between align-items-center">{{ total_cases.total_confirmed }}</div>
                   </div>
                </div>
             </div>
-            <div class="col-md-4">
-               <div class="card mb-4 shadow-sm">
+            <div class="col-md-3">
+               <div class="card mb-3 shadow-sm">
+                  <div class="card-body">
+                     <b class="card-text">Total active cases</b>
+                     <div class="d-flex justify-content-between align-items-center">{{ total_cases.total_active }}</div>
+                  </div>
+               </div>
+            </div>
+            <div class="col-md-3">
+               <div class="card mb-3 shadow-sm">
                   <div class="card-body">
                      <b class="card-text">Total deaths</b>
                      <div class="d-flex justify-content-between align-items-center">{{ total_cases.total_deaths }}</div>
                   </div>
                </div>
             </div>
-            <div class="col-md-4">
-               <div class="card mb-4 shadow-sm">
+            <div class="col-md-3">
+               <div class="card mb-3 shadow-sm">
                   <div class="card-body">
                      <b class="card-text">Total recovered</b>
                      <div class="d-flex justify-content-between align-items-center">{{ total_cases.total_recovered }}</div>
@@ -47,12 +55,30 @@
             <div class="col-md-12">
                <div class="card mb-12 shadow-sm">
                   <div class="card-body">
-                     <b class="card-text">Graph of cases</b>
+                     <b class="card-text">Graph of total cases</b>
                      <div class="d-flex justify-content-between align-items-center">
                         <div class="container">
                            <div class="row">
                               <div class="col-md-12">
                                  <canvas ref="covidCases"></canvas>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="row py-2">
+            <div class="col-md-12">
+               <div class="card mb-12 shadow-sm">
+                  <div class="card-body">
+                     <b class="card-text">Graph of active cases</b>
+                     <div class="d-flex justify-content-between align-items-center">
+                        <div class="container">
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <canvas ref="covidActiveCases"></canvas>
                               </div>
                            </div>
                         </div>
@@ -128,6 +154,7 @@
                 }
                 let dates = [];
                 let confirmed = [];
+                let active_cases = [];
                 let deaths = [];
                 let recovered = [];
                 axios.get(sApi)
@@ -135,12 +162,14 @@
                         for (let iCtr = 0; iCtr < response.data.length; iCtr++) {
                             let sDate = response.data[iCtr].date;
                             let sConfirmed = response.data[iCtr].confirmed;
+                            let sActiveCases = response.data[iCtr].active_cases;
                             let sDeaths = response.data[iCtr].deaths;
                             let sRecovered = response.data[iCtr].recovered;
                             dates.push(sDate);
                             confirmed.push(sConfirmed);
                             deaths.push(sDeaths);
                             recovered.push(sRecovered);
+                            active_cases.push(sActiveCases);
                         }
                         if (window.oCases != undefined) {
                             window.oCases.destroy();
@@ -156,6 +185,11 @@
                             window.oRecovered.destroy();
                         }
                         window.oRecovered = this.setGraph(this.$refs.covidRecovered, dates, recovered, 'Number of recoveries', 'Recovery chart', 'rgb(0, 0, 255)');
+
+                        if (window.oActiveCases != undefined) {
+                            window.oActiveCases.destroy();
+                        }
+                        window.oActiveCases = this.setGraph(this.$refs.covidActiveCases, dates, active_cases, 'Number of active cases', 'Active cases chart', 'rgb(255, 255, 0)');
                         
                 });
             },

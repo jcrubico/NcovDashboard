@@ -64,6 +64,7 @@ class DashboardService
         $aReturn['total_confirmed'] = $aEndData['confirmed'];
         $aReturn['total_deaths'] = $aEndData['deaths'];
         $aReturn['total_recovered'] = $aEndData['recovered'];
+        $aReturn['total_active'] = $aReturn['total_confirmed'] - ($aReturn['total_recovered'] + $aReturn['total_deaths']);
         return $aReturn;
     }
 
@@ -86,6 +87,7 @@ class DashboardService
         }
         foreach ($aJsonDecoded[$aValidate['text']] as $iKey => $aValue) {
             $aJsonDecoded[$aValidate['text']][$iKey]['date'] = date('F d, Y', strtotime($aValue['date']));
+            $aJsonDecoded[$aValidate['text']][$iKey]['active_cases'] = $aValue['confirmed'] - ($aValue['recovered'] + $aValue['deaths']);
         }
         return $aJsonDecoded[$aValidate['text']];
     }
@@ -104,6 +106,7 @@ class DashboardService
                 @$aResult[$iKeySub]['confirmed'] += $aValueSub['confirmed'];
                 @$aResult[$iKeySub]['deaths'] += $aValueSub['deaths'];
                 @$aResult[$iKeySub]['recovered'] += $aValueSub['recovered'];
+                @$aResult[$iKeySub]['active_cases'] += $aValueSub['confirmed'] - ($aValueSub['recovered'] + $aValueSub['deaths']);
             }
         }
         return $aResult;

@@ -25,5 +25,7 @@ https://pomber.github.io/covid19/timeseries.json
 Spread the :heart: in ✝️ amen!
 
 ## Credits
+
 Pomber JSON: https://github.com/pomber/covid19
+
 CSSEGISandData: https://github.com/CSSEGISandData/COVID-19

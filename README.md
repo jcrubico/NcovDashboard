@@ -9,18 +9,16 @@
     <li>Bootstrap</li>
 </ul>
 
+Instructions:
+To run the prototype, please do the following:
+1.) Create an .env file
+2.) Initialize the laravel key in new .env file.
+3.) Add COVID_API_LINK to the .env file with this value:
+https://pomber.github.io/covid19/timeseries.json
+4.) Check and enjoy!
+
 Spread the :heart: in ✝️ amen!
-
-## Kindly follow me on:
-#### Github 🕵✝️: https://github.com/jcrubico
-#### Facebook 🕵✝️: https://www.facebook.com/jc.rubico.11
-
-## Kindly email me on:
-#### Yahoo 🕵✝️: jcrubico@yahoo.com
-#### Gmail 🕵✝️: jcrubico.personal@gmail.com
 
 ## Credits
 Pomber JSON: https://github.com/pomber/covid19
-
-
 CSSEGISandData: https://github.com/CSSEGISandData/COVID-19
